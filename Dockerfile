@@ -22,10 +22,12 @@ RUN apt-get install -y --no-install-recommends \
         libglib2.0-0 libsm6 \
         libfontconfig1  \
         libxrender1  \
-        libxtst6 && \
-    rm -rf /var/lib/apt/lists/*
-RUN apt-get update -qq
-RUN apt-get install -y --no-install-recommends libavcodec-ffmpeg-extra56 libswscale-ffmpeg3 python3-pip\
+        libxtst6
+#     rm -rf /var/lib/apt/lists/*
+# RUN apt-get update -qq 
+RUN apt-get autoremove &&\
+    apt-get autoclean
+RUN apt-get install -y --no-install-recommends libavcodec-ffmpeg-extra56 libswscale-ffmpeg3 python3-pip \
 	libavformat-ffmpeg56 libharfbuzz0b libxcb-shm0 libcairo2 libpangoft2-1.0-0 expect cpio vim
 
 
@@ -37,8 +39,8 @@ RUN tar -zxf l_openvino_toolkit_p_2018.3.343.tgz
 RUN python3 -m pip install --upgrade pip
 
 # replace this file name with the wheel you want which lies in the same directory.
-# COPY tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl .
-# RUN python3 -m pip install tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl
+COPY tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl .
+RUN python3 -m pip install tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl
 
 WORKDIR l_openvino_toolkit_p_2018.3.343
 RUN ./install_cv_sdk_dependencies.sh
