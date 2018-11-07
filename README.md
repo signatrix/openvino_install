@@ -1,4 +1,6 @@
-# openvino-docker
+# openvino installation:
+
+You can install openvino natively in 18.04 or via docker container in Ubuntu16.04.
 
 In this folder you need to include a pip wheel for the tensorflow installation and the openvino toolkit tgz file. Change names as needed in the Dockerfile.
 
