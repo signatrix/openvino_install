@@ -1,18 +1,24 @@
-# openvino-install
+# Installing Openvino on Ubuntu 18.04
 
-In this folder you can include a pip wheel for the tensorflow installation and the openvino toolkit tgz file. Change names as needed in the Dockerfile.
+As of November 2018 Intel's Openvino Toolkit does not officially support ubuntu 18.04. Some simple hacks make it possible to install it however.
 
-The docker image will create a Ubuntu16.04 image able to run openVino code and running the tensorflow installation you provide with the wheel.
+Please include the openvino toolkit tgz file in this folder. Depending on which version you downloaded you might need to change a few path names in the Dockerfile/install.sh script.
 
-You can find some good pip wheels to include on the server at /media/backup1/wheels. Include a python3.5 tf1.11 variant. or let it download it's own version(might not be optimized)
+Install.sh will copy the few files from the patch folder to replace the ones not compatible with ubuntu 18.04
 
-The native version downloads the toollkit from the 192.168.1.49. Might need to change path/ip or something if it is not up to date.
+# Creating an Openvino docker image
+
+I was not able to find any official docker images so here is one for your convenience.
+
+The Dockerfile will create an Ubuntu16.04 image able to run openVino code.
 
 
 
-#Usage:
+# Usage:
+
 For docker
-docker run --device=/dev/dri:/dev/dri 
+docker build . -t name:tag
+docker run --device=/dev/dri:/dev/dri -it name:tag 
 
 For native:
 sudo ./install.sh
