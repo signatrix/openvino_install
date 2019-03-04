@@ -33,16 +33,18 @@ RUN apt-get install -y --no-install-recommends libavcodec-ffmpeg-extra56 libswsc
 
 WORKDIR /res
 # place the openvino toolkit tgz file in the same directory 
-COPY l_openvino_toolkit_p_2018.3.343.tgz .
-RUN tar -zxf l_openvino_toolkit_p_2018.3.343.tgz 
+COPY l_openvino_toolkit_p_2018.5.455.tgz .
+RUN tar -zxf l_openvino_toolkit_p_2018.5.455.tgz 
 
 RUN python3 -m pip install --upgrade pip
 
 # replace this file name with the wheel you want which lies in the same directory.
-COPY tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl .
-RUN python3 -m pip install tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl
+# COPY tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl .
+# RUN python3 -m pip install tensorflow-1.11.0rc1-cp35-cp35m-linux_x86_64.whl
 
-WORKDIR l_openvino_toolkit_p_2018.3.343
+RUN python3 -m pip install tensorflow
+
+WORKDIR l_openvino_toolkit_p_2018.5.455
 RUN ./install_cv_sdk_dependencies.sh
 
 
@@ -64,6 +66,9 @@ RUN ./install_NEO_OCL_driver.sh
 RUN usermod -a -G video root
 
 RUN echo "source /opt/intel/computer_vision_sdk/bin/setupvars.sh" >> /root/.bashrc
+
+WORKDIR /opt/intel/computer_vision_sdk/deployment_tools/demo/
+RUN ./demo_squeezenet_download_convert_run.sh
 
 WORKDIR /
 

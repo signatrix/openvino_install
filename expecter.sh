@@ -25,14 +25,20 @@ expect "Please type a selection or press \"Enter\" to accept default choice \\\[
 
 send -- "\r"
 
+for {set i 1} {$i < 10} {incr i 1} {
+ send -- " " 
+}
+
+send -- "\r"
+
 expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:"
 
 send -- "1\r"
 
-expect "Press \"Enter\" key to continue"
+expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:"
 
-send -- "\r"
+send -- "1\r"
 
-expect "Press \"Enter\" key to quit"
+expect "Press \"Enter\" key to quit:"
 
 send -- "\r"
