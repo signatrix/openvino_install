@@ -1,0 +1,16 @@
+version: '2'
+services:
+
+    model_optimizer:
+        build: 
+            context: .
+            dockerfile: ./Dockerfile
+        image: openvino:5.455
+        user: ${CURRENT_UID}
+        environment:
+            - PYTHONUNBUFFERED=x
+        volumes:
+            - ./:/input_model
+            - ./:/output_model
+        working_dir: /opt/intel/computer_vision_sdk/deployment_tools/model_optimizer
+        entrypoint: python3 mo.py
