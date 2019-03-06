@@ -11,6 +11,6 @@ services:
             - PYTHONUNBUFFERED=x
         volumes:
             - ./:/input_model
-            - ./:/output_model
+            - ./:/output_dir
         working_dir: /opt/intel/computer_vision_sdk/deployment_tools/model_optimizer
         entrypoint: python3 mo.py
