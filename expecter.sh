@@ -2,43 +2,59 @@
 
 set timeout -1
 
-spawn ./install.sh
+spawn ./install.sh --ignore-signature
 
 expect "Press" {send "\r"}
 
 for {set i 1} {$i < 100} {incr i 1} {
- send -- " " 
+ send " " 
 }
 
 
 expect "Type \"accept\" to continue or \"decline\" to go back to the previous menu:"
 
-send -- "\r"
+send "\r"
 
-send -- "accept\r"
+send "accept\r"
 
 expect "Please type a selection:"
 
-send -- "2\r" 
+send "2\r" 
 
 expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:"
 
-send -- "\r"
+send "\r"
 
 for {set i 1} {$i < 10} {incr i 1} {
- send -- " " 
+ send " " 
 }
 
-send -- "\r"
+send "\r"
 
 expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:"
 
-send -- "1\r"
+send "1\r"
 
-expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:"
+# expect {
+#     "Please type a selection or press \"Enter\" to accept default choice \\\[ n \\\]: " {
+#         send "y\r"
+#         expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:"
+#         send "\r"
+#         expect "Press \"Enter\" key to quit:"
+#         send "\r"
+#     }
+#     "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]: " {
+#         send "hi"
+#         send "1\r"
+#         expect "Press \"Enter\" key to quit:"
+#         send "\r"
+#     }
+# }
 
-send -- "1\r"
+expect "Please type a selection or press \"Enter\" to accept default choice \\\[ 1 \\\]:" 
+
+send "1\r"
 
 expect "Press \"Enter\" key to quit:"
 
-send -- "\r"
+send "\r"
