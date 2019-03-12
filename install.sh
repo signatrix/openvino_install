@@ -26,7 +26,11 @@ echo "installing toolkit"
 echo "setting up environment variables. Adding to zshrc"
 cd /opt/intel/computer_vision_sdk
 source bin/setupvars.sh
-echo 'source /opt/intel/computer_vision_sdk/bin/setupvars.sh' >> /home/cw/.zshrc
+if [ -d "/home/cw" ]; then
+  echo 'source /opt/intel/computer_vision_sdk/bin/setupvars.sh' >> /home/cw/.zshrc
+else
+  echo "Please create /home/cw user and add setupvars to rc script."
+fi
 
 cd install_dependencies
 sudo -E ./install_NEO_OCL_driver.sh
