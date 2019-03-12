@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-INSTALLDIR=/opt/intel//computer_vision_sdk_2018.3.343
+INSTALLDIR=/opt/intel//computer_vision_sdk_2018.5.455
 export INTEL_CVSDK_DIR=$INSTALLDIR
 
 # parse command line options
