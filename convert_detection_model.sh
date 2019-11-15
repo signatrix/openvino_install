@@ -1,2 +1,1 @@
-
 CURRENT_UID=$(id -u):$(id -g) docker-compose run model_optimizer --input_model /input_model/frozen_inference_graph.pb --output_dir /output_dir --tensorflow_use_custom_operations_config extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config /input_model/pipeline.config "$@"

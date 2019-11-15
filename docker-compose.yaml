@@ -5,12 +5,12 @@ services:
         build: 
             context: .
             dockerfile: ./Dockerfile
-        image: openvino:5.455
+        image: openvinor3.1:latest
         user: ${CURRENT_UID}
         environment:
             - PYTHONUNBUFFERED=x
         volumes:
             - ./:/input_model
             - ./:/output_dir
-        working_dir: /opt/intel/computer_vision_sdk/deployment_tools/model_optimizer
+        working_dir: /opt/intel/openvino/deployment_tools/model_optimizer
         entrypoint: python3 mo.py

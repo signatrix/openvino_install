@@ -1,10 +1,8 @@
 # Installing Openvino on Ubuntu 18.04
 
-As of November 2018 Intel's Openvino Toolkit does not officially support ubuntu 18.04. Some simple hacks make it possible to install it however.
-
 Please include the openvino toolkit tgz file in this folder. Depending on which version you downloaded you might need to change a few path names in the Dockerfile/install.sh script.
 
-Install.sh will copy the few files from the patch folder to replace the ones not compatible with ubuntu 18.04
+<!-- Install.sh will copy the few files from the patch folder to replace the ones not compatible with ubuntu 18.04 -->
 
 ---
 
